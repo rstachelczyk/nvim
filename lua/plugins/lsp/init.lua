@@ -15,6 +15,7 @@ return {
 		require("mason-lspconfig").setup({
 			ensure_installed = {
 				"lua_ls", -- lua
+				"ruby_lsp", --ruby
 				-- "gopls", -- go
 				--"tsserver", -- typescript
 				--"eslint", -- javascript
@@ -27,6 +28,12 @@ return {
 					require("lspconfig")[server_name].setup({
 						capabilities = capabilities,
 					})
+					vim.keymap.set("n", "H", vim.lsp.buf.hover, {})
+					vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
+					vim.keymap.set("n", "gr", vim.lsp.buf.references, {})
+					vim.keymap.set("n", "<leader>=", vim.lsp.buf.format, {})
+					vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
+					vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, {})
 				end,
 				-- Next, you can provide targeted overrides for specific servers.
 				["lua_ls"] = require("plugins.lsp.lua_ls"),
