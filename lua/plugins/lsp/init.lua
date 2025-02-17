@@ -37,6 +37,7 @@ return {
 				end,
 				-- Next, you can provide targeted overrides for specific servers.
 				["lua_ls"] = require("plugins.lsp.lua_ls"),
+				["tailwindcss"] = require("plugins.lsp.tailwindcss"),
 			},
 		})
 	end,
