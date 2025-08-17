@@ -47,3 +47,5 @@ vim.opt.fillchars = {
 	diff = "╱",
 	eob = " ",
 }
+
+vim.o.winborder = "rounded"

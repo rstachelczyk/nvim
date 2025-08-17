@@ -94,18 +94,21 @@ return {
 		opts = { signs = false },
 	},
 	-- Auto Pairs
-	-- Added This Plugin
+	-- {
+	-- 	"windwp/nvim-autopairs",
+	-- 	event = "InsertEnter",
+	-- 	config = true,
+	-- 	-- use opts = {} for passing setup options
+	-- 	-- this is equalent to setup({}) function
+	-- },
 	{
-
-		{
-			"windwp/nvim-autopairs",
-			event = "InsertEnter",
-			config = true,
-			-- use opts = {} for passing setup options
-			-- this is equalent to setup({}) function
-		},
-		{
-			"RRethy/nvim-treesitter-endwise",
-		},
+    "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
+    ---@module "ibl"
+    ---@type ibl.config
+    opts = {},
+	},
+	{
+		"RRethy/nvim-treesitter-endwise",
 	},
 }

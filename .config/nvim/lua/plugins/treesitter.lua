@@ -16,9 +16,10 @@ return {
 				"markdown_inline",
 				"vim",
 				"vimdoc",
-				"java",
+				"query",
+				-- "java",
 				"javascript",
-				"typescript",
+				-- "typescript",
 			},
 
 			-- Install parsers synchronously (only applied to `ensure_installed`)
