@@ -104,7 +104,7 @@ vim.keymap.set("x", "<leader>p", "p")
 ------
 
 -- Normal character delete does not save values
-vim.keymap.set("n", "x", [["_x"]])
+vim.keymap.set("n", "x", [["_x]], { noremap = true, silent = true })
 
 -- Diagnostic keymaps
 -------------
@@ -115,28 +115,16 @@ vim.keymap.set("n", "<leader>pe", vim.diagnostic.goto_prev, { desc = "Go to [P]r
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic [E]rror messages" })
 
--- [[ Basic Autocommands ]]
---  See `:help lua-guide-autocommands`
-
--- Highlight when yanking (copying) text
---  Try it with `yap` in normal mode
---  See `:help vim.highlight.on_yank()`
-vim.api.nvim_create_autocmd("TextYankPost", {
-	desc = "Highlight when yanking (copying) text",
-	group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
-	callback = function()
-		vim.highlight.on_yank()
-	end,
-})
-
 -- Search notes vault
-vim.keymap.set(
-	"n",
-	"<leader>ns",
-	':Telescope live_grep search_dirs={"/Users/rstachelczyk/Library/Mobile\\ Documents/iCloud~md~obsidian/Documents/DevNotes"}<CR>'
-)
-vim.keymap.set(
-	"n",
-	"<leader>np",
-	':Telescope find_files search_dirs={"/Users/rstachelczyk/Library/Mobile\\ Documents/iCloud~md~obsidian/Documents/DevNotes"}<CR>'
-)
+local vault_path = vim.fn.expand("~/vaults/DevNotes")
+vim.keymap.set("n", "<leader>ns", function()
+	require("telescope.builtin").live_grep({
+		search_dirs = { vault_path },
+	})
+end)
+
+vim.keymap.set("n", "<leader>np", function()
+	require("telescope.builtin").find_files({
+		search_dirs = { vault_path },
+	})
+end)
