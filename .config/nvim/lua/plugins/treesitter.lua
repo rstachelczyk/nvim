@@ -17,6 +17,7 @@ return {
 				"vim",
 				"vimdoc",
 				"query",
+				"slim",
 				-- "java",
 				"javascript",
 				-- "typescript",
