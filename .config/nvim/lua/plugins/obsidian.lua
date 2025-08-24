@@ -22,6 +22,12 @@ return {
 			blink = true,
 			min_chars = 2,
 		},
+		follow_img_func = function(img)
+			vim.ui.open(img)
+		end,
+		follow_url_func = function(url)
+			vim.ui.open(url)
+		end,
 		mappings = {
 			-- Overrides the 'gf' mapping to work on markdown/wiki links within your vault.
 			["gf"] = {

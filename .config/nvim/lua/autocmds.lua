@@ -23,7 +23,7 @@ vim.api.nvim_create_autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
 
 vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function()
-		vim.keymap.set("n", "H", vim.lsp.buf.hover, {})
+		vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
 		vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
 		vim.keymap.set("n", "gr", vim.lsp.buf.references, {})
 		vim.keymap.set("n", "<leader>=", vim.lsp.buf.format, {})
