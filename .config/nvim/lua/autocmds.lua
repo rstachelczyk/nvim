@@ -21,6 +21,17 @@ vim.api.nvim_create_autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
 	end,
 })
 
+vim.api.nvim_create_autocmd("LspAttach", {
+	callback = function()
+		vim.keymap.set("n", "H", vim.lsp.buf.hover, {})
+		vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
+		vim.keymap.set("n", "gr", vim.lsp.buf.references, {})
+		vim.keymap.set("n", "<leader>=", vim.lsp.buf.format, {})
+		vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
+		vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, {})
+	end,
+})
+
 -- Highlight on yank
 vim.api.nvim_create_autocmd("TextYankPost", {
 	group = augroup("highlight_yank"),

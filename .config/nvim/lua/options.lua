@@ -48,4 +48,9 @@ vim.opt.fillchars = {
 	eob = " ",
 }
 
-vim.o.winborder = "rounded"
+-- vim.o.winborder = "rounded"
+
+vim.diagnostic.config({
+	virtual_text = true,
+	underline = true,
+})
