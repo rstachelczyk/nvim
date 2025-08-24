@@ -56,7 +56,7 @@ vim.keymap.set("n", "c", [["_c]])
 vim.keymap.set("n", "<leader>c", "c")
 
 -- 'Change to end of line' does not save values
-vim.keymap.set("n", "C", [["_C]])
+vim.keymap.set("n", "C", '"_c$', { noremap = true, silent = true })
 
 -- Special 'change to end of line' saves values
 vim.keymap.set("n", "<leader>C", "C")

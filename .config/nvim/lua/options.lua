@@ -47,3 +47,10 @@ vim.opt.fillchars = {
 	diff = "╱",
 	eob = " ",
 }
+
+-- vim.o.winborder = "rounded"
+
+vim.diagnostic.config({
+	virtual_text = true,
+	underline = true,
+})
