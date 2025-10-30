@@ -23,7 +23,7 @@ return {
 				"eslint",
 				"tailwindcss",
 				-- "prettierd", -- or the equivalent for Prettier
-				-- "gopls", -- go
+				"gopls", -- go
 				--"tsserver", -- typescript
 				--"eslint", -- javascript
 				--"dockerls", -- docker

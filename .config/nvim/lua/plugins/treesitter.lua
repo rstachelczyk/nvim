@@ -1,26 +1,36 @@
 -- Syntax coloring made better
 return {
 	"nvim-treesitter/nvim-treesitter",
+	branch = "master",
+	lazy = "false",
 	build = ":TSUpdate",
 	config = function()
 		require("nvim-treesitter.install").prefer_git = true
 		require("nvim-treesitter.configs").setup({
-			-- A list of parser names, or "all" (the five listed parsers should always be installed)
 			ensure_installed = {
 				"bash",
+				"css",
+				-- "dart",
 				"diff",
+				"embedded_template",
+				"go",
 				"html",
+				-- "java",
+				"javascript",
+				"json",
 				"lua",
 				"luadoc",
 				"markdown",
 				"markdown_inline",
+				"query",
+				"regex",
+				"ruby",
+				"slim",
+				"tsx",
+				"typescript",
 				"vim",
 				"vimdoc",
-				"query",
-				"slim",
-				-- "java",
-				"javascript",
-				-- "typescript",
+				"yaml",
 			},
 
 			-- Install parsers synchronously (only applied to `ensure_installed`)
@@ -39,7 +49,7 @@ return {
 				-- Instead of true it can also be a list of languages
 				additional_vim_regex_highlighting = { "ruby" },
 			},
-			indent = { enable = true, disable = { "ruby" } },
+			indent = { enable = true, disable = { "ruby", "yaml" } },
 		})
 	end,
 }

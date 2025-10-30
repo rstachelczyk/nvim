@@ -2,7 +2,7 @@ return {
 	"obsidian-nvim/obsidian.nvim",
 	lazy = true,
 	version = "*",
-	ft = "markdown",
+	ft = { "markdown", "md" },
 	opts = {
 		workspaces = {
 			{
@@ -28,21 +28,21 @@ return {
 		follow_url_func = function(url)
 			vim.ui.open(url)
 		end,
-		mappings = {
-			-- Overrides the 'gf' mapping to work on markdown/wiki links within your vault.
-			["gf"] = {
-				action = function()
-					return require("obsidian").util.gf_passthrough()
-				end,
-				opts = { noremap = false, expr = true, buffer = true },
-			},
-			-- Toggle check-boxes.
-			["<leader>ch"] = {
-				action = function()
-					return require("obsidian").util.toggle_checkbox()
-				end,
-				opts = { buffer = true },
-			},
-		},
+		-- mappings = {
+		-- 	-- Overrides the 'gf' mapping to work on markdown/wiki links within your vault.
+		-- 	["gf"] = {
+		-- 		action = function()
+		-- 			return require("obsidian").util.gf_passthrough()
+		-- 		end,
+		-- 		opts = { noremap = false, expr = true, buffer = true },
+		-- 	},
+		-- 	-- Toggle check-boxes.
+		-- 	["<leader>ch"] = {
+		-- 		action = function()
+		-- 			return require("obsidian").util.toggle_checkbox()
+		-- 		end,
+		-- 		opts = { buffer = true },
+		-- 	},
+		-- },
 	},
 }

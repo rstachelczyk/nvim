@@ -21,6 +21,7 @@ vim.api.nvim_create_autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
 	end,
 })
 
+-- Set LSP keymaps & disable spell check in hover windows.
 vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function()
 		vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
@@ -30,6 +31,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.keymap.set("n", "<leader>=", vim.lsp.buf.format, {})
 		vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
 		vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, {})
+
+		-- FIXME:
+		-- vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+		-- 	on_open = function()
+		-- 		vim.opt_local.spell = false
+		-- 	end,
+		-- })
 	end,
 })
 
@@ -77,6 +85,7 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 -- wrap and check for spell in text filetypes
+-- FIXME: Fix to disable spellcheck on LSP documentation hover windows
 -- vim.api.nvim_create_autocmd("FileType", {
 -- 	group = augroup("wrap_spell"),
 -- 	pattern = { "text", "plaintex", "typst", "gitcommit", "markdown" },
