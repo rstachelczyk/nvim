@@ -62,7 +62,7 @@ return {
 			{
 				"<leader>pp",
 				function()
-					builtin.find_files({ cwd = require("lazy.core.config").options.root })
+					builtin.find_files({ vim.fn.stdpath("config") })
 				end,
 				desc = "Find Plugin Files",
 			},
