@@ -25,6 +25,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function()
 		vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
 		vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
+		vim.keymap.set("n", "gD", vim.lsp.buf.declaration, {})
 		vim.keymap.set("n", "gr", vim.lsp.buf.references, {})
 		vim.keymap.set("n", "<leader>=", vim.lsp.buf.format, {})
 		vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
@@ -76,14 +77,14 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 -- wrap and check for spell in text filetypes
-vim.api.nvim_create_autocmd("FileType", {
-	group = augroup("wrap_spell"),
-	pattern = { "text", "plaintex", "typst", "gitcommit", "markdown" },
-	callback = function()
-		vim.opt_local.wrap = true
-		vim.opt_local.spell = true
-	end,
-})
+-- vim.api.nvim_create_autocmd("FileType", {
+-- 	group = augroup("wrap_spell"),
+-- 	pattern = { "text", "plaintex", "typst", "gitcommit", "markdown" },
+-- 	callback = function()
+-- 		vim.opt_local.wrap = true
+-- 		vim.opt_local.spell = true
+-- 	end,
+-- })
 
 -- make it easier to close man-files when opened inline
 vim.api.nvim_create_autocmd("FileType", {
