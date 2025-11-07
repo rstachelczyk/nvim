@@ -1,3 +1,6 @@
+-- Keymaps are automatically loaded on the VeryLazy event
+-- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
+-- Add any additional keymaps here
 vim.keymap.set("i", "jj", "<Esc>")
 
 vim.opt.hlsearch = true
@@ -56,7 +59,7 @@ vim.keymap.set("n", "c", [["_c]])
 vim.keymap.set("n", "<leader>c", "c")
 
 -- 'Change to end of line' does not save values
-vim.keymap.set("n", "C", [["_C]])
+vim.keymap.set("n", "C", '"_c$', { noremap = true, silent = true })
 
 -- Special 'change to end of line' saves values
 vim.keymap.set("n", "<leader>C", "C")
@@ -118,13 +121,13 @@ vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagn
 -- Search notes vault
 local vault_path = vim.fn.expand("~/vaults/DevNotes")
 vim.keymap.set("n", "<leader>ns", function()
-	require("telescope.builtin").live_grep({
-		search_dirs = { vault_path },
-	})
+  require("telescope.builtin").live_grep({
+    search_dirs = { vault_path },
+  })
 end)
 
 vim.keymap.set("n", "<leader>np", function()
-	require("telescope.builtin").find_files({
-		search_dirs = { vault_path },
-	})
+  require("telescope.builtin").find_files({
+    search_dirs = { vault_path },
+  })
 end)
