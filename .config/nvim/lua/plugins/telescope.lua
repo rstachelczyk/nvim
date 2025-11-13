@@ -60,7 +60,7 @@ return {
 			},
 			{ "<leader>vh", builtin.help_tags, desc = "Help Tags" },
 			{
-				"<leader>pp",
+				"<leader>cp",
 				function()
 					builtin.find_files({ vim.fn.stdpath("config") })
 				end,

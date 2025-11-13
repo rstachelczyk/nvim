@@ -10,7 +10,7 @@ return {
 			ensure_installed = {
 				"bash",
 				"css",
-				-- "dart",
+				"dart",
 				"diff",
 				"embedded_template",
 				"go",

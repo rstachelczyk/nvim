@@ -68,9 +68,12 @@ return {
 		"folke/which-key.nvim",
 		event = "VeryLazy",
 		opts = {
-			-- your configuration comes here
-			-- or leave it empty to use the default settings
-			-- refer to the configuration section below
+			preset = "helix",
+			-- Delay before showing the popup. Can be a number or a function that returns a number.
+			---@type number | fun(ctx: { keys: string, mode: string, plugin?: string }):number
+			delay = function(ctx)
+				return ctx.plugin and 0 or 1000
+			end,
 		},
 		keys = {
 			{
@@ -125,4 +128,13 @@ return {
 		"tpope/vim-rails",
 		ft = { "ruby", "eruby", "yaml" },
 	},
+	{
+		'nvim-flutter/flutter-tools.nvim',
+		lazy = false,
+		dependencies = {
+			'nvim-lua/plenary.nvim',
+			'stevearc/dressing.nvim', -- optional for vim.ui.select
+		},
+		config = true,
+	}
 }
