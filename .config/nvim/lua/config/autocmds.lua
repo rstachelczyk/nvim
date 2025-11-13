@@ -12,3 +12,14 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
     vim.b.autoformat = false
   end,
 })
+
+--TODO: Add this / see if lazyvim handles this once v0.12 is released
+-- vim.api.nvim_create_autocmd("LspAttach", {
+--   callback = function(args)
+--     local client = vim.lsp.get_client_by_id(args.data.client_id)
+--
+--     if client ~= nil and client:supports_method("textDocument/documentColor") then
+--       vim.lsp.document_color.enable(true, args.buf)
+--     end
+--   end,
+-- })
