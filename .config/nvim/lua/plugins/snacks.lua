@@ -1,7 +1,16 @@
 return {
   "folke/snacks.nvim",
   opts = {
-    picker = { enabled = true },
+    picker = {
+      enabled = true,
+      sources = {
+        files = { hidden = true, exclude = { ".git", ".DS_Store" } },
+        explorer = { hidden = true, exclude = { ".git", ".DS_Store" } },
+        grep = { hidden = true, exclude = { ".git", ".DS_Store" } },
+        grep_word = { hidden = true, exclude = { ".git", ".DS_Store" } },
+        grep_buffers = { hidden = true, exclude = { ".git", ".DS_Store" } },
+      },
+    },
     dashboard = {
       enabled = true,
       preset = {
@@ -53,7 +62,7 @@ return {
     { "<leader>n", function() Snacks.picker.notifications() end, desc = "Notification History" },
     -- find
     { "<leader>fb", false},
-    { "<leader>fB",  false},
+    { "<leader>fB", false},
     { "<leader>fc", false},
     { "<leader>ff", false},
     { "<leader>fg", false},
@@ -66,6 +75,8 @@ return {
     { "<leader>pg", function() Snacks.picker.git_files() end, desc = "Find Files (git-files)" },
     { "<leader>pr", LazyVim.pick("oldfiles"), desc = "Recent" },
     { "<leader>pp", function() Snacks.picker.projects() end, desc = "Projects" },
+    { "<leader>pb", function() Snacks.picker.buffers() end, desc = "Buffers" },
+    { "<leader>pB", function() Snacks.picker.buffers({ hidden = true, nofile = true }) end, desc = "Buffers (all)" },
     -- Grep
     { "<leader>sb", false},
     { "<leader>sB", false},
