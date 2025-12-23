@@ -116,6 +116,12 @@ vim.keymap.set("n", "<leader>pe", vim.diagnostic.goto_prev, { desc = "Go to [P]r
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic [E]rror messages" })
 
+-- Tmux Navigation
+vim.keymap.set("n", "<C-h>", "<Cmd>TmuxNavigateLeft<CR>")
+vim.keymap.set("n", "<C-j>", "<Cmd>TmuxNavigateDown<CR>")
+vim.keymap.set("n", "<C-k>", "<Cmd>TmuxNavigateUp<CR>")
+vim.keymap.set("n", "<C-l>", "<Cmd>TmuxNavigateRight<CR>")
+
 -- Search notes vault
 local vault_path = vim.fn.expand("~/vaults/DevNotes")
 vim.keymap.set("n", "<leader>ns", function()
