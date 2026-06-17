@@ -111,8 +111,14 @@ vim.keymap.set("n", "x", [["_x]], { noremap = true, silent = true })
 -------------
 -- LSP Remaps
 -------------
-vim.keymap.set("n", "<leader>ne", vim.diagnostic.goto_next, { desc = "Go to [N]ext [E]rror message" })
-vim.keymap.set("n", "<leader>pe", vim.diagnostic.goto_prev, { desc = "Go to [P]revious [E]rror message" })
+vim.keymap.set("n", "<leader>ne", function()
+  vim.diagnostic.jump({ count = 1, float = false })
+end, { desc = "Go to [N]ext [E]rror message" })
+
+vim.keymap.set("n", "<leader>pe", function()
+  vim.diagnostic.jump({ count = -1, float = false })
+end, { desc = "Go to [P]revious [E]rror message" })
+
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic [E]rror messages" })
 
