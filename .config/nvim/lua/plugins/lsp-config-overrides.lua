@@ -15,6 +15,7 @@ return {
           cmd = { vim.fn.expand("~/.local/share/mise/shims/rubocop"), "--lsp" },
           -- cmd = { "mise", "x", "--", "ruby-lsp" },
         },
+        cssls = {},
       },
 
       codelens = {
