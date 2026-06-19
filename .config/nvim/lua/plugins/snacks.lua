@@ -14,6 +14,7 @@ return {
         grep_buffers = { hidden = true, exclude = { ".git", ".DS_Store" } },
       },
     },
+    image = { enabled = true },
     dashboard = {
       enabled = true,
       preset = {
