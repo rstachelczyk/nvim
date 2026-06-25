@@ -5,16 +5,33 @@ return {
       -- required ruby_lsp and rubocop to be a part of the bundle for each app.
       -- Can be installed via `gem install ruby-lsp rubocop`
       servers = {
+
         ruby_lsp = {
           mason = false,
           cmd = { vim.fn.expand("~/.local/share/mise/shims/ruby-lsp") },
           -- cmd = { "mise", "x", "--", "ruby-lsp" },
+          init_options = {
+            linters = (function()
+              local cwd = vim.loop.cwd()
+              if vim.loop.fs_stat(cwd .. "/.rubocop.yml") then
+                return nil -- let ruby-lsp auto-detect
+              else
+                return {} -- disable linting
+              end
+            end)(),
+          },
         },
+
         rubocop = {
+          enabled = function()
+            -- Only enable if .rubocop.yml exists in project directory
+            return vim.loop.fs_stat(vim.loop.cwd() .. "/.rubocop.yml") ~= nil
+          end,
           mason = false,
           cmd = { vim.fn.expand("~/.local/share/mise/shims/rubocop"), "--lsp" },
           -- cmd = { "mise", "x", "--", "ruby-lsp" },
         },
+
         cssls = {},
       },
 
