@@ -13,8 +13,23 @@ return {
         grep_word = { hidden = true, exclude = { ".git", ".DS_Store" } },
         grep_buffers = { hidden = true, exclude = { ".git", ".DS_Store" } },
       },
+      win = {
+        input = {
+          keys = {
+            ["<Esc>"] = { "close", mode = { "i", "n" } },
+          },
+        },
+      },
     },
-    image = { enabled = true },
+    image = {
+      enabled = true,
+      resolve = function(path, src)
+        local api = require("obsidian.api")
+        if api.path_is_note(path) then
+          return api.resolve_attachment_path(src)
+        end
+      end,
+    },
     dashboard = {
       enabled = true,
       preset = {
@@ -81,6 +96,7 @@ return {
     { "<leader>pp", function() Snacks.picker.projects() end, desc = "Projects" },
     { "<leader>pb", function() Snacks.picker.buffers() end, desc = "Buffers" },
     { "<leader>pB", function() Snacks.picker.buffers({ hidden = true, nofile = true }) end, desc = "Buffers (all)" },
+    { "<leader>pk", function() Snacks.picker.keymaps() end, desc = "Keymaps" },
     -- Grep
     { "<leader>sb", false},
     { "<leader>sB", false},
@@ -89,6 +105,7 @@ return {
     { "<leader>sp", false},
     { "<leader>sw", false},
     { "<leader>sW", false},
+    { "<leader>sk", false},
     { "<leader>f", LazyVim.pick("live_grep"), desc = "Grep (Root Dir)" },
     { "<leader>F", LazyVim.pick("live_grep", { root = false }), desc = "Grep (cwd)" },
     { "<leader>fp", function() Snacks.picker.lazy() end, desc = "Search for Plugin Spec" },
